@@ -15,12 +15,10 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableMethodSecurity
 public class UserManagementConfig {
 
-
     private final ProductPermissionEvaluator productPermissionEvaluator;
 
-
-    public UserManagementConfig(ProductPermissionEvaluator bookPermissionEvaluator) {
-        this.productPermissionEvaluator = bookPermissionEvaluator;
+    public UserManagementConfig(ProductPermissionEvaluator productPermissionEvaluator) {
+        this.productPermissionEvaluator = productPermissionEvaluator;
     }
 
     @Bean
@@ -38,16 +36,15 @@ public class UserManagementConfig {
     public UserDetailsService userDetailsService() {
         var service = new InMemoryUserDetailsManager();
 
-        var u1 = User.withUsername("mahsa") .password("1234") .roles("manager") .build();
-        var u2 = User.withUsername("ashkan") .password("1234") .roles("admin") .build();
-        var u3 = User.withUsername("nader") .password("1234") .authorities("user") .build();
+        var u1 = User.withUsername("bita").password("1234").roles("manager").build();
+        var u2 = User.withUsername("borna").password("1234").roles("admin").build();
+        var u3 = User.withUsername("bardia").password("1234").authorities("user").build();
 
         service.createUser(u1);
         service.createUser(u2);
         service.createUser(u3);
         return service;
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {

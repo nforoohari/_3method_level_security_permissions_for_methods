@@ -8,13 +8,12 @@ import java.util.Map;
 @Repository
 public class ProductRepository {
 
-    private Map<String, Product> products =
-            Map.of("1", new Product("iphone","mahsa"),
-                    "2", new Product("ipad","ashkan"),
-                    "3", new Product("mac","nader"));
+    private final Map<String, Product> products =
+            Map.of("1", new Product("iphone", "bita"),
+                    "2", new Product("ipad", "borna"),
+                    "3", new Product("mac", "bardia"));
 
     public Product findProduct(String code) {
         return products.get(code);
-
     }
 }
